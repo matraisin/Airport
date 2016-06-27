@@ -1,0 +1,158 @@
+Aberdeen
+Abu Dhabi
+Addis Ababa
+Alicante
+Almeria
+Amsterdam
+Athens
+Atlanta
+Bacau
+Barcelona
+Bari
+Basel
+Bergamo
+Berlin
+Biarritz
+Bilbao
+Birmingham 
+Bologna
+Bordeaux
+Boston
+Bratislava
+Bremen
+Bristol
+Brussels
+Bucharest
+Budapest
+Burgas
+Bydgoszcz
+Carcassonne
+Cardiff
+Catania
+Chania
+Brussels
+Chisinau
+Cologne
+Comiso
+Copenhagen 
+Corfu
+Dalaman
+Doncaster
+Donegal
+Dubai
+Dubrovnik
+Dusseldorf
+East Midlands
+Edinburgh
+Eindhoven
+Exeter
+Faro
+Florence
+Frankfurt
+Frankfurt
+Fuerteventura
+Funchal 
+Gdansk
+Geneva
+Gerona
+Glasgow
+Halifax
+Hamburg
+Hartford
+Helsinki
+Heraklion
+Ibiza 
+Inverness
+Isle of Man
+Istanbul
+Izmir
+Jersey
+Katowice
+Kaunas
+Kerry
+Kos
+Krakow
+La Rochelle
+Lanzarote
+Las Palmas
+Leeds/Bradford
+Los Angeles
+Newark
+Lisbon
+Liverpool
+Lodz
+London 
+Los Angeles
+Lourdes
+Lublin
+Luxembourg
+Lyon
+Madrid
+Malaga
+Malta/Luga
+Manchester
+Marrakech
+Marseille
+Memmingen-Allgau
+Menorca
+Milan
+Modlin
+Montego Bay
+Montreal
+Moscow
+Munich
+Murcia
+Nantes 
+Naples
+New York
+Newcastle
+Newquay
+Nice
+Orlando
+Oslo
+Palermo
+Palma Mallorca
+Paris
+Perpignan 
+Pisa
+Porto
+Poznan
+Prague
+Pula
+Rennes
+Reus
+Reykjavik
+Rhodes Airport
+Riga
+Rodez
+Rome
+Rzeszow
+Salzberg
+San Francisco 
+Santander
+Santiago
+Sevilla 
+Southampton
+St John’s
+Stockholm
+Stuttgart
+Szczecin
+Tallinn
+Tel Aviv Yafo
+Tenerife
+Toronto 
+Toulouse
+Tours
+Valencia
+Vancouver
+Venice/Marco Polo
+Venice/Treviso
+Verona
+Vienna
+Vilnius
+Warsaw
+Washington DC
+Wroclaw
+Zadar
+Zakinthos
+Zurich

@@ -1,0 +1,10 @@
+Airbus,A340-300,295
+Airbus,A340-500,372
+Airbus,A340-600,420
+Boeing,777-200,440
+Airbus,A380-700,525
+Boeing,777-300,550
+Boeing,747-400,624
+Boeing,747-8,700
+Airbus,A380-800,853
+Airbus,A380-900,900
