@@ -178,7 +178,13 @@ public class Logic {
     
     public void callendar(){
         
+        
+        System.out.println("Where you wish to FLY?");
+        String goTo = kb.nextLine();
+        System.out.println("From?");
+        String goFrom = kb.nextLine();
       printCal.calCall();
+        System.out.println("What date you wish to ");
         
         
     }
