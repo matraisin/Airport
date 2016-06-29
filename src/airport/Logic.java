@@ -245,7 +245,7 @@ public class Logic {
                 if (yes.equalsIgnoreCase("y")){
                     int pOm=(rg.nextInt(10)-5);
                     if (pOm ==0){
-                        pOm = pOm +1;
+                        pOm += 1;
                     }
                     System.out.println("the nearest flight to " + to + " is at " + (result + pOm) 
                             + " of JUNE" );
