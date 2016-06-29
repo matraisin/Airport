@@ -21,6 +21,7 @@ import java.util.Scanner;
 
 
 public class Logic {
+    
     Printing_Month printCal = new Printing_Month();
     Scanner ki = new Scanner(System.in);
     //create a calendar to set up manual date
@@ -43,7 +44,10 @@ public class Logic {
     LinkedHashMap<String, String> results = new LinkedHashMap<>();
     ArrayList<Pilot> pilots = new ArrayList<>();
     ArrayList<Aircraft> extra = new ArrayList<>();
+    ArrayList<Aircraft> extraFF = new ArrayList<>();
+    
 
+    //allows admin to log in at menu() and access more features
     public void admin() {
         System.out.println("*");
         String user = kb.nextLine();
@@ -57,14 +61,16 @@ public class Logic {
             Airport.menu();
         }    
     }
-    
+    // if username is valid this method will display options available to admin only
     public void validUser(){
         //Scanner ki = new Scanner(System.in);
-        System.out.println("Hello ADMIN");
+        System.out.println("                Hello ADMIN");
+        System.out.println("\nThere are " + results.size() + " cases to manage\n");
         System.out.println("To manage existing Flights press    1");
         System.out.println("Add Flight type                     2");
-        System.out.println("To see Popular searches type        3");
+        System.out.println("To manage inquarry type             3");
         System.out.println("Log out type                        4");
+        System.out.println("EMERGENCY FLIGHT                    5");
         
         System.out.println("");
         int adm = ki.nextInt();
@@ -82,14 +88,19 @@ public class Logic {
                 break;
             case 4:
                 Airport.menu();
-                break;    
+                break;
+            case 5:
+                
+                Airport.elogic.extraFlights();
+                break;
             default:
                 validUser();
         }
         
         
     }
-
+    
+    //manage flights for admin user
     public void adminFlights()
     {
         System.out.println("Flights available to manage: ");
@@ -160,22 +171,16 @@ public class Logic {
                     System.out.println("Somethink went wrong try again\n");
                     adminFlights();
                 }
+            case 3:
+                Airport.menu();
+                break;
       
         }
         
     }
     
-//    public void extraFlights()
-//    {
-//        System.out.println("LIST OF EXTRA FLIGHTS");
-//        //populate extra Flights
-//        Helicopter copter = new Helicopter();
-//        System.out.println("Please ADD an IRISH COAST GUARD TRIP");
-//        String costa = kb.nextLine();
-//        copter.setCraft("IRCG Sikorsky S-92 ");
-//    }
-//    
-    
+
+    // running the callendar and allows genarate a custom quarry for the user 
     public void callendar(){
         
         
@@ -183,20 +188,117 @@ public class Logic {
         String goTo = kb.nextLine();
         System.out.println("From?");
         String goFrom = kb.nextLine();
-      printCal.calCall();
-        System.out.println("What date you wish to ");
+        System.out.println("");
+        printCal.calCall();
+        System.out.println("What day you wish to go?");
+        String newDate = kb.nextLine(),JUNE;
+        checkIfAvailable(goTo,goFrom,newDate);
+        //System.out.println("waterfall chek 1");
+        
+        
         
         
     }
-    
-    
+    // checks availability for non admin user to check is his flight destonation 
+    // and departure are available. Generates a random date of trip
+    public void checkIfAvailable(String to, String from, String newD){
+        
+        if (cityMap.contains(to) && cityMap.contains(from)){
+            
+            System.out.println("Connection available");
+            boolean a = rg.nextBoolean();
+            if (a == true){
+                Flight customF = new Flight();
+                System.out.println("Flight available at  " + newD);
+                System.out.println("Do you wish to book it? Y/N");
+                String bookIt = kb.nextLine();
+                    if (bookIt.equalsIgnoreCase("y")){
+                        System.out.println("What is Your Name Please");
+                        String name = kb.nextLine();
+                        System.out.println("What is your surname?");
+                        String surname = kb.nextLine();
+                        String checkKey = Integer.toString(rg.nextInt(99));
+                        String key = (name.charAt(1) + surname.charAt(0) + "ID"+ checkKey);
+                        customF.setDate(newD);
+                        customF.setDestanation(to);
+                        customF.setDeparture(from);
+                        customF.setStatus("ON TIME");
+                        customF.setiD(key);
+                        fullFlight.put(key, customF);
+                        results.put(key, customF.toString());
+                        System.out.println("Your Flight from " + from + " to " 
+                                + to + " was sucessfully booked at " + (newD) 
+                        + " JUNE");
+                        System.out.println("Have a nice trip");
+                        Airport.menu();
+                    }
+                    else {
+                        Airport.menu();
+                    }
+            }
+            else{
+                int result = Integer.parseInt(newD);			
+	
+                System.out.println("unfortuneatly not available at " + newD);
+                System.out.println("Do you wish to check closes to your search? Y/N");
+                String yes = kb.nextLine();
+                if (yes.equalsIgnoreCase("y")){
+                    int pOm=(rg.nextInt(10)-5);
+                    if (pOm ==0){
+                        pOm = pOm +1;
+                    }
+                    System.out.println("the nearest flight to " + to + " is at " + (result + pOm) 
+                            + " of JUNE" );
+                    System.out.println("do you wish to book it? Y/N");
+                    Flight customF = new Flight();
+                    String bookIt = kb.nextLine();
+                    if (bookIt.equalsIgnoreCase("y")){
+                        System.out.println("What is Your Name Please");
+                        String name = kb.nextLine();
+                        System.out.println("What is your surname?");
+                        String surname = kb.nextLine();
+                        String checkKey = Integer.toString(rg.nextInt(99));
+                        String key = (name.charAt(1) + surname.charAt(0) + "ID"+ checkKey);
+                        customF.setDate(Integer.toString(result+pOm));
+                        customF.setDestanation(to);
+                        customF.setDeparture(from);
+                        customF.setStatus("ON TIME");
+                        customF.setiD(key);
+                        fullFlight.put(key, customF);
+                        results.put(key, customF.toString());
+                        System.out.println("Your Flight from " + from + " to " 
+                                + to + " was sucessfully booked at " + (result + pOm) 
+                        + " JUNE");
+                        System.out.println("Have a nice trip");
+                        Airport.menu();
+                    }
+                    else{
+                        System.out.println("");
+                        Airport.menu();
+                    }
+                    
+                    
+                }
+                else{
+                    Airport.menu();
+                }
+            }
+            
+        }
+        else{
+            System.out.println("Destonations incorrect try again");
+            callendar();
+            
+        }
+    }
+  
     
     //manages the current flight and allows to change details
     public Map.Entry letsCheck( Map.Entry me)
     {
            System.out.println("What detail you wish to manage");
                         System.out.println("Airlane/Orgin/Destonation/Departure/"
-                                + "Arrival/Date/\"Airplane\"/Status/Terminal");
+                                + "Arrival/Date/Status/Terminal");
                         String manageIt = kb.nextLine();
                         
                         switch(manageIt.toLowerCase()){
@@ -327,7 +429,8 @@ public class Logic {
                         } 
         return me;
     }
-    
+    // admin option to create a custom flight
+    // with full or half/auto generated details
     public void adminAddsFlight()
     {
         Airplane plane = new Airplane();
@@ -396,8 +499,9 @@ public class Logic {
             
         }
     }
-       
-    public void interfacable(Aircraft plane) {   //create and new object Flight
+    //take in object of an interface aircraft and populate its values  
+    public void interfacable(Aircraft plane) {   
+        //create and new object Flight
         Flight flight = new Flight();
         //take in object plane
         flight.setAircraft(plane);
@@ -442,7 +546,7 @@ public class Logic {
         fullFlight.put(flight.getiD(), flight);
 
     }
-
+    //check if auto generated trip does not have same arrival and departure
     public String[] flyThere(String arrival, String departure) {
         if (arrival.equalsIgnoreCase(departure)) {
             departure = (Airport.logic.cityMap.get(rg.nextInt(158)));
@@ -454,7 +558,7 @@ public class Logic {
         track[1] = departure;
         return track;
     }
-
+    //auto generate planes model,make,capacity
     public void populatePlanes() {
         {
             //name of the file
@@ -491,7 +595,7 @@ public class Logic {
 
                 //always close files
                 bufferedReader.close();
-                System.out.println("\n            *** HAVE A GREAT TRIP ***\n");
+                //System.out.println("\n            *** HAVE A GREAT TRIP ***\n");
 
             } catch (FileNotFoundException ex) {
                 System.out.println("    Unable to open file " + fileName + "'");
@@ -501,13 +605,13 @@ public class Logic {
         }
 
     }
-
+    // for loop to increase number of auto gen flights
     public void isWorking() {
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             populatePlanes();
         }
     }
-
+    //setting up auto arrivals
     public void arrivals() {
         for (int i = 0; i < 1; i++) {
 
@@ -524,7 +628,7 @@ public class Logic {
         }
         miniLooper();
     }
-
+    // setting the auto gen departures
     public void departures() {
         for (int i = 0; i < 1; i++) {
 
@@ -541,7 +645,8 @@ public class Logic {
         }
             miniLooper();
     }
-
+    //mini menu alows to search trough arrivals and departures 
+    //if search found any result it will allow to save it
     public void miniLooper() 
     {
         System.out.println("PRESS  \"B\"  to get BACK");
@@ -568,23 +673,22 @@ public class Logic {
                     String b = me.getValue().toString();
                     results.put(a,b);   
                     }
-                    else{
-                        miniLooper();
-                    }
                 }
-        }
+        }       
+//                System.out.println("Destonation not found\n");
                 miniLooper();
                 break;
             default:
+                System.out.println("Flight not found try once more");
                 miniLooper();
                                   }
     }
-
+    //will display search results for amdin user
     public void popularSearch()
     {
         System.out.println(results.toString());
     }
-    
+    // auto generates random atatus on time,delay with minutes, arrived
     public String randomStatus(int a) {
         int status = rg.nextInt(25);
         if (a == 0 && status > 10 || a == 1 && status > 5) {
@@ -603,7 +707,6 @@ public class Logic {
     
     
     // set time that arrived     
-
     private String setTimeA() {
 
         //System.out.println("Current Date::");
@@ -615,7 +718,6 @@ public class Logic {
     }
 
     //set time of incoming
-
     private String setTimeI() {
 
         //System.out.println("Current Date::");
@@ -626,8 +728,7 @@ public class Logic {
         return date;
     }
 
-    //read from a file 
-
+    //read airlanes from a file 
     public void populateAirlanes() {
         //name of the file
         String fileName = "temp.txt";

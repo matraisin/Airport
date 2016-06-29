@@ -9,14 +9,14 @@ import java.util.Scanner;
 
 /**
  *
- * @author rogozinskim
+ * @author matraisin
  */
 
 public class Printing_Month {
 
     private static int numDays = 0;
     private static int h = 0;
-    
+    // calculate the leap year
     public static boolean leap(int year)
     {
         if(((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0))
@@ -28,6 +28,7 @@ public class Printing_Month {
             return false;
         }
     }
+    //calculate teh first day of the year
     public static void firstDayOfYear(int year)
     {
         int month = 13;
@@ -44,8 +45,9 @@ public class Printing_Month {
             case 5: dayName = "Thursday"; break;
             default: dayName = "Friday"; break;
         }
-        //System.out.println("The first day of the year is " + dayName);
     }
+    
+    //calculate first day of the month
     public static void firstDayOfMonth(int month, int year)
     {
         if(month == 1 || month == 2)
@@ -75,6 +77,7 @@ public class Printing_Month {
         numDays = days[month];
         //System.out.println("The number of days in the month is " + numDays);
     }
+    //prints cal in nice clean order
     public static void printCal(int month, int year)
     {
         String[] monthNames = {"","January","February","March","April","May","June","July","August","September","October","November","December"};
@@ -92,10 +95,11 @@ public class Printing_Month {
         }
 
     }
+    //call the calendar from logic class
     public  void calCall()
     {
     
-        Scanner input = new Scanner(System.in);
+        //Scanner input = new Scanner(System.in);
         //System.out.print("Enter month (1-12): ");
         int month = 6;
         if(month < 1 || month > 12)

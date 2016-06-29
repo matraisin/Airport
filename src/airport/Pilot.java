@@ -7,7 +7,7 @@ package airport;
 
 /**
  *
- * @author rogozinskim
+ * @author matraisin
  */
 public class Pilot {
     

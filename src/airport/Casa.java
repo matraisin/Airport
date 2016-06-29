@@ -7,7 +7,7 @@ package airport;
 
 /**
  *
- * @author rogozinskim
+ * @author matraisin
  */
 public class Casa implements Aircraft {
     
@@ -24,6 +24,16 @@ public class Casa implements Aircraft {
     public Casa() {
     }
 
+    public void miaCasa(String destanation, int duration ) {
+        this.airlane = "UNDERCOVER";
+        this.orgin = "Mexico";
+        this.destanation = destanation;
+        this.date = "Today";
+        this.duration = duration;
+        this.status = "ON MY WAY";
+    }
+    
+    
     public Casa(String airlane, String orgin, String destanation, String departure, 
            String date, Aircraft craft, int duration, String status) {
         this.airlane = airlane;
@@ -110,11 +120,10 @@ public class Casa implements Aircraft {
 
     @Override
     public String toString() {
-        return "Casa{" + "airlane=" + airlane + ", orgin=" + orgin 
-                + ", destanation=" + destanation + ", departure=" 
-                + departure + ", date=" + date + ", craft=" + craft 
-                + ", duration=" + duration + ", status=" + status 
-                + ", terminal=" + terminal + '}';
+        return "Casa{" + "airlane=" + airlane + ", orgin=" + orgin + ", destanation=" + destanation + ", departure=" + departure + ", date=" + date + ", craft=" + craft + ", duration=" + duration + ", status=" + status + ", terminal=" + terminal + '}';
+    }
+
+    
     }
     
     
@@ -128,4 +137,4 @@ public class Casa implements Aircraft {
     
     
     
-}
+

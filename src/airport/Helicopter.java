@@ -7,7 +7,7 @@ package airport;
 
 /**
  *
- * @author rogozinskim
+ * @author matraisin
  */
 public class Helicopter implements Aircraft{
     
@@ -21,6 +21,14 @@ public class Helicopter implements Aircraft{
 
     public Helicopter() {
     }
+    
+    public void setscheduleExtra(String destanation, String date, int duration){
+         this.destanation = destanation;
+        this.date = date;
+        this.duration = duration;
+        
+    }
+    
 
     public Helicopter(String destanation, String date, int duration) {
         this.destanation = destanation;
