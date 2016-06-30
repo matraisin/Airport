@@ -17,7 +17,16 @@ public class Airport {
     static Scanner kb = new Scanner(System.in);
     static Logic logic = new Logic();
     static ExtraLogic elogic = new ExtraLogic();
+
+    /**
+     *
+     */
     public static int amt = 5;// control amount of generated dummy flights
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         
       

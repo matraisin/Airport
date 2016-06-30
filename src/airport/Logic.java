@@ -574,6 +574,7 @@ public class Logic {
     }
     /**
      * check if auto generated trip does not have same arrival and departure
+     * return two Strings in one array
      * @param arrival String
      * @param departure String
      * @return two Strings in one array

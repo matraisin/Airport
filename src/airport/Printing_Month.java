@@ -5,7 +5,7 @@
  */
 package airport;
 
-import java.util.Scanner;
+
 
 /**
  *
@@ -16,8 +16,14 @@ public class Printing_Month {
 
     private static int numDays = 0;
     private static int h = 0;
-    // calculate the leap year
-    public static boolean leap(int year)
+    
+
+    /**
+     * calculate the leap year
+     * @param year
+     * @return
+     */
+        public static boolean leap(int year)
     {
         if(((year % 4 == 0) && !(year % 100 == 0)) || (year % 400 == 0))
         {
@@ -28,8 +34,13 @@ public class Printing_Month {
             return false;
         }
     }
-    //calculate teh first day of the year
-    public static void firstDayOfYear(int year)
+    
+
+    /**
+     * calculate teh first day of the year
+     * @param year
+     */
+        public static void firstDayOfYear(int year)
     {
         int month = 13;
         year--;
@@ -47,8 +58,14 @@ public class Printing_Month {
         }
     }
     
-    //calculate first day of the month
-    public static void firstDayOfMonth(int month, int year)
+    
+
+    /**
+     *calculate first day of the month
+     * @param month
+     * @param year
+     */
+        public static void firstDayOfMonth(int month, int year)
     {
         if(month == 1 || month == 2)
         {
@@ -67,18 +84,29 @@ public class Printing_Month {
             case 5: dayName = "Thursday"; break;
             default: dayName = "Friday"; break;
         }
-        //System.out.println("The first day of the month is " + dayName);
+
     }
+
+    /**
+     * Calculate the numbers of days in:
+     * @param month 
+     * @param year
+     */
     public static void numDaysInMonth(int month, int year)
     {
         int[] days = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
         if (month == 2 && leap(year)) days[month] = 29;
         numDays = days[month];
-        //System.out.println("The number of days in the month is " + numDays);
     }
-    //prints cal in nice clean order
-    public static void printCal(int month, int year)
+    
+
+    /**
+     * prints cal in nice clean order
+     * @param month
+     * @param year
+     */
+        public static void printCal(int month, int year)
     {
         String[] monthNames = {"","January","February","March","April","May","June","July","August","September","October","November","December"};
 
@@ -95,8 +123,12 @@ public class Printing_Month {
         }
 
     }
-    //call the calendar from logic class
-    public  void calCall()
+    
+
+    /**
+     * call the calendar from logic class
+     */
+        public  void calCall()
     {
     
         //Scanner input = new Scanner(System.in);
