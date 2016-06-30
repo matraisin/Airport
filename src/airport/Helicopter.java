@@ -21,7 +21,12 @@ public class Helicopter implements Aircraft{
 
     public Helicopter() {
     }
-    
+    /**
+     * custom method constructor to set up: 
+     * @param destanation String 
+     * @param date  String
+     * @param duration  int
+     */
     public void setscheduleExtra(String destanation, String date, int duration){
          this.destanation = destanation;
         this.date = date;

@@ -23,7 +23,12 @@ public class Casa implements Aircraft {
 
     public Casa() {
     }
-
+    /**
+     * custom method to set up some variables auto and some manualy by 
+     * calling the constructor with
+     * @param destanation String
+     * @param duration int
+     */
     public void miaCasa(String destanation, int duration ) {
         this.airlane = "UNDERCOVER";
         this.orgin = "Mexico";

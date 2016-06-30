@@ -19,7 +19,9 @@ public class ExtraLogic {
     
     
     
-    
+        /**
+         * extra menu for extra filights just to use Interface
+         */
         public void extraFlights()
     {
         System.out.println("================= LIST OF EXTRA FLIGHTS =================");

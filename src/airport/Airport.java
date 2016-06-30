@@ -17,6 +17,7 @@ public class Airport {
     static Scanner kb = new Scanner(System.in);
     static Logic logic = new Logic();
     static ExtraLogic elogic = new ExtraLogic();
+    public static int amt = 5;// control amount of generated dummy flights
     public static void main(String[] args) {
         
       
@@ -24,12 +25,14 @@ public class Airport {
        logic.populateCities();
        logic.populatePilots();
        logic.populateAirlanes();
-       logic.isWorking();
+       logic.isWorking(amt);
        menu();
        
        
     }
-    //calling methods from logic and try catch for input, recursion in main.
+    /**
+     * calling methods from logic and try catch for input, recursion in main.
+     */
     public static void menu()
     {
         

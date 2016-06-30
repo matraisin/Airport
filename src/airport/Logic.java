@@ -19,7 +19,10 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
-
+/**
+ * 
+ * @author matraisin
+ */
 public class Logic {
     
     Printing_Month printCal = new Printing_Month();
@@ -47,7 +50,9 @@ public class Logic {
     ArrayList<Aircraft> extraFF = new ArrayList<>();
     
 
-    //allows admin to log in at menu() and access more features
+    /**
+     * allows admin-user to log in at menu() and access more features
+     */
     public void admin() {
         System.out.println("*");
         String user = kb.nextLine();
@@ -61,7 +66,9 @@ public class Logic {
             Airport.menu();
         }    
     }
-    // if username is valid this method will display options available to admin only
+    /**
+     * if username is valid this method will display options available to admin only
+     */
     public void validUser(){
         //Scanner ki = new Scanner(System.in);
         System.out.println("                Hello ADMIN");
@@ -100,7 +107,9 @@ public class Logic {
         
     }
     
-    //manage flights for admin user
+    /**
+     * manage flights for admin user
+     */
     public void adminFlights()
     {
         System.out.println("Flights available to manage: ");
@@ -180,7 +189,9 @@ public class Logic {
     }
     
 
-    // running the callendar and allows genarate a custom quarry for the user 
+    /**
+     * running the callendar and allows genarate a custom quarry for the user 
+     */
     public void callendar(){
         
         
@@ -199,8 +210,14 @@ public class Logic {
         
         
     }
-    // checks availability for non admin user to check is his flight destonation 
+
+    /**
+     *     // checks availability for non admin user to check is his flight destonation 
     // and departure are available. Generates a random date of trip
+     * @param to - String destonation
+     * @param from - String of Departure
+     * @param newD - 
+     */
     public void checkIfAvailable(String to, String from, String newD){
         
         if (cityMap.contains(to) && cityMap.contains(from)){
@@ -293,7 +310,11 @@ public class Logic {
     }
   
     
-    //manages the current flight and allows to change details
+    /**
+     * manages the current flight and allows to change details
+     * @param me type of a Map
+     * @return Map
+     */
     public Map.Entry letsCheck( Map.Entry me)
     {
            System.out.println("What detail you wish to manage");
@@ -429,8 +450,10 @@ public class Logic {
                         } 
         return me;
     }
-    // admin option to create a custom flight
-    // with full or half/auto generated details
+    /**
+     * admin option to create a custom flight
+     * with full or half/auto generated details
+     */
     public void adminAddsFlight()
     {
         Airplane plane = new Airplane();
@@ -499,7 +522,10 @@ public class Logic {
             
         }
     }
-    //take in object of an interface aircraft and populate its values  
+    /**
+     * take in object of an interface aircraft and populate its values
+     * @param plane are all Objects that implement interface Aircraft
+     */  
     public void interfacable(Aircraft plane) {   
         //create and new object Flight
         Flight flight = new Flight();
@@ -523,12 +549,12 @@ public class Logic {
         flight.setStatus(randomStatus(rg.nextInt(2)));
         if (flight.getStatus().equalsIgnoreCase("arrved"))
         {
-             //set date of flight
+        //set date of flight
         flight.setDate(setTimeA());
         }
         else
         {
-             //set date of flight
+        //set date of flight
         flight.setDate(setTimeI());
         }
 
@@ -546,7 +572,12 @@ public class Logic {
         fullFlight.put(flight.getiD(), flight);
 
     }
-    //check if auto generated trip does not have same arrival and departure
+    /**
+     * check if auto generated trip does not have same arrival and departure
+     * @param arrival String
+     * @param departure String
+     * @return two Strings in one array
+     */
     public String[] flyThere(String arrival, String departure) {
         if (arrival.equalsIgnoreCase(departure)) {
             departure = (Airport.logic.cityMap.get(rg.nextInt(158)));
@@ -558,7 +589,9 @@ public class Logic {
         track[1] = departure;
         return track;
     }
-    //auto generate planes model,make,capacity
+    /**
+     * auto generate planes model,make,capacity
+     */
     public void populatePlanes() {
         {
             //name of the file
@@ -595,7 +628,6 @@ public class Logic {
 
                 //always close files
                 bufferedReader.close();
-                //System.out.println("\n            *** HAVE A GREAT TRIP ***\n");
 
             } catch (FileNotFoundException ex) {
                 System.out.println("    Unable to open file " + fileName + "'");
@@ -605,13 +637,20 @@ public class Logic {
         }
 
     }
-    // for loop to increase number of auto gen flights
-    public void isWorking() {
-        for (int i = 0; i < 5; i++) {
+    /**
+     *  for loop to increase number of auto gen flights
+     * @param amt is an number of recursion
+     */
+    public void isWorking(int amt) {
+        
+        
+        for (int i = 0; i < amt; i++) {
             populatePlanes();
         }
     }
-    //setting up auto arrivals
+    /**
+     * setting up auto arrivals
+     */
     public void arrivals() {
         for (int i = 0; i < 1; i++) {
 
@@ -628,7 +667,9 @@ public class Logic {
         }
         miniLooper();
     }
-    // setting the auto gen departures
+    /**
+     * setting the auto gen departures
+     */
     public void departures() {
         for (int i = 0; i < 1; i++) {
 
@@ -645,8 +686,11 @@ public class Logic {
         }
             miniLooper();
     }
-    //mini menu alows to search trough arrivals and departures 
-    //if search found any result it will allow to save it
+    /**
+     * mini menu alows to search trough arrivals and departures 
+     * if search found any result it will allow to save it
+     * 
+     */
     public void miniLooper() 
     {
         System.out.println("PRESS  \"B\"  to get BACK");
@@ -683,12 +727,18 @@ public class Logic {
                 miniLooper();
                                   }
     }
-    //will display search results for amdin user
+    /**
+     * will display search results for amdin user
+     */
     public void popularSearch()
     {
         System.out.println(results.toString());
     }
-    // auto generates random atatus on time,delay with minutes, arrived
+    /**
+     *  auto generates random atatus on time,delay with minutes, arrived
+     * @param a is a number that differ for arrivals and departures
+     * @return 
+     */
     public String randomStatus(int a) {
         int status = rg.nextInt(25);
         if (a == 0 && status > 10 || a == 1 && status > 5) {
@@ -706,7 +756,10 @@ public class Logic {
 
     
     
-    // set time that arrived     
+    /**
+     * set time that arrived 
+     * @return 
+     */    
     private String setTimeA() {
 
         //System.out.println("Current Date::");
@@ -717,7 +770,10 @@ public class Logic {
         return date;
     }
 
-    //set time of incoming
+    /**
+     * set time of incoming
+     * @return 
+     */
     private String setTimeI() {
 
         //System.out.println("Current Date::");
@@ -728,7 +784,9 @@ public class Logic {
         return date;
     }
 
-    //read airlanes from a file 
+    /**
+     * read airlanes from a file 
+     */
     public void populateAirlanes() {
         //name of the file
         String fileName = "temp.txt";
@@ -750,6 +808,7 @@ public class Logic {
                 }
 
                 //always close files
+                bufferedReader.close();
             }
             System.out.println("\n" + "*** " + count + " Airlanes ***\n");
 //            System.out.println("\n     *** Flights generated succesfully ***\n");
@@ -761,7 +820,9 @@ public class Logic {
         }
     }
 
-    //reading city names from a file and add them to ArrayList cityMap
+    /**
+     * reading city names from a file and add them to ArrayList cityMap
+     */
     public void populateCities() {
 
         //name of the file
@@ -795,7 +856,9 @@ public class Logic {
         }
     }
 
-    // reading pilots names from a file and adding to ArrayList pilotNames
+    /**
+     * reading pilots names from a file and adding to ArrayList pilotNames
+     */
     public void populatePilots() {
         //name of the file
         String fileName = "temp.txt";
@@ -813,12 +876,12 @@ public class Logic {
                 while ((line = bufferedReader.readLine()) != null) {
 
                     pilotNames.add(line);
-//            System.out.println(count + " " + line.toString());
                     count++;
 
                 }
 
-                //always close files
+            //always close files
+            bufferedReader.close();
             }
             System.out.println("\n" + "*** " + count + " Pilots available ***\n");
 //            System.out.println("\n     *** Flights generated succesfully ***\n");
